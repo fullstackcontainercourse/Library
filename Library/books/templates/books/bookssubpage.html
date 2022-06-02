@@ -1,0 +1,31 @@
+{% extends "books/base.html" %}
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Title</td>
+            <td>Id</td>
+            <td>ISBN</td>
+            <td>Author</td>
+            <td>Type</td>
+        </tr>
+    </thead>
+<tbody>
+
+    {% for book in book_data %} 
+    <tr>
+    <td>{{book.title}}</td>
+    <td>{{book.id}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.type}}</td>
+    </tr>
+  
+    {%endfor%}
+
+</tbody>
+
+    </table>
+
+{% endblock content %}
