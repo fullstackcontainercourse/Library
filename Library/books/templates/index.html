@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Library Application</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div
+        class="jumbotron text-center"
+        style="
+          background-color: lightgreen;
+          margin-bottom: 20px;
+          margin-top: 10px;
+          padding: 20px;
+        "
+      >
+        <div class="row">
+          <div class="col-sm-1">
+            {% load static %}
+            <img src="{% static '/images/673780.gif' %}" style="width: 300%" />
+          </div>
+          <div class="col-sm-11">
+            <h1>Library System</h1>
+            <p>Details of books and actions are presenteds here</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+              <a href="http://127.0.0.1:8000/books/libraryhome/">Home</a>
+            </li>
+            <li>
+              <a href="http://127.0.0.1:8000/books/libraryhome/create/"
+                >Add Book</a
+              >
+            </li>
+            <li><a href="#">Add User</a></li>
+            <li><a href="#">Issue Book</a></li>
+          </ul>
+        </div>
+
+        {% block content %}
+        <div class="col-sm-10">
+          <div class="container">
+            <h2>List of available books</h2>
+            <p>Books available in this library.</p>
+            <!-- <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Book Name</th>
+                  <th>Author</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John</td>
+                  <td>Doe</td>
+                  <td>john@example.com</td>
+                  <td style="white-space: nowrap">
+                    <button type="button" class="btn btn-default">
+                      Default
+                    </button>
+                  </td>
+                  <td style="white-space: nowrap">
+                    <button type="button" class="btn btn-default">
+                      Default
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Mary</td>
+                  <td>Moe</td>
+                  <td>mary@example.com</td>
+                </tr>
+                <tr>
+                  <td>July</td>
+                  <td>Dooley</td>
+                  <td>july@example.com</td>
+                </tr>
+              </tbody>
+            </table> -->
+
+            <ul>
+              <!-- Iterate over object_list -->
+              {% for object in object_list %}
+              <!-- Display Objects -->
+              <li>{{ object.title }}</li>
+              <li>{{ object.author }}</li>
+              <li>{{ object.isbn }}</li>
+              <li>{{ object.type }}</li>
+
+              <hr />
+              <!-- If object_list is empty  -->
+              {% empty %}
+              <li>No objects yet.</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
